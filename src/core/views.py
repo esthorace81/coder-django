@@ -22,3 +22,22 @@ def index(request):
     año_actual = datetime.now().year
     contexto = {"año": año_actual}
     return render(request, "core/index.html", contexto)
+
+
+def tirar_dado(request):
+    from datetime import datetime
+    from random import randint
+
+    tiro_de_dado = randint(1, 6)
+
+    if tiro_de_dado == 6:
+        mensaje = f"Has tirado el 🎲 y has sacado ¡{tiro_de_dado}! 😊 ✨ Ganaste ✨"
+    else:
+        mensaje = f"Has tirado el 🎲 y has sacado ¡{tiro_de_dado}! 😒 Sigue intentando. Presiona F5"
+
+    datos = {
+        "title": "Tiro de Dados",
+        "message": mensaje,
+        "fecha": datetime.now().strftime("%H:%M:%S.%f"),
+    }
+    return render(request, "core/dados.html", context=datos)
