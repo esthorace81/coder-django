@@ -29,4 +29,5 @@ urlpatterns = [
     path("tirar-dado/", views.tirar_dado),
     path("ejercicio-1/", views.ejercicio_1),
     path("ver-notas/", views.ver_notas),
+    path("ejercicio-2/", views.ejercicio_2),
 ]
