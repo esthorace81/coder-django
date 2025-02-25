@@ -17,3 +17,15 @@
 ## Crear una aplicación
 
     python manage.py startapp app
+
+## Preparar archivos de migración
+
+    python manage.py makemigrations
+
+## Aplicar migraciones a la base de datos
+
+    python manage.py migrate
+
+## Shell interactivo con las configuraciones de Django
+
+    python manage.py shell
