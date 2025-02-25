@@ -6,13 +6,18 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Estas son las notas</h1>
-    {% for nota in notas %}
-        {% if nota > 6 %}
-            <p style="color: green">Aprobado: {{ nota }}</p>        
-        {% else %}
-            <p style="color:red">Desaprobado: {{ nota }}</p>
-        {% endif %}
-    {% endfor %}
+    
+    <div style="font-size: larger; 
+                color: deepskyblue; 
+                text-align: center;">
+        <h1>Estas son las notas</h1>
+        {% for nota in notas %}
+            {% if nota > 6 %}
+                <p style="color: green">Aprobado: {{ nota }}</p>        
+            {% else %}
+                <p style="color:red">Desaprobado: {{ nota }}</p>
+            {% endif %}
+        {% endfor %}
+    </div>
 </body>
 </html>
