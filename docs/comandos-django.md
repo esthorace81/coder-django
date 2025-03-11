@@ -29,3 +29,7 @@
 ## Shell interactivo con las configuraciones de Django
 
     python manage.py shell
+
+## Crear superusuario
+
+    python manage.py createsuperuser
