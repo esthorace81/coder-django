@@ -1,24 +1,13 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La Caja de Pandora</title>
-</head>
-<body>
-    <h1>La Caja de Pandora</h1>
-    <ul>
-        <li>Django es un framework de desarrollo web de código abierto, escrito en Python, que permite crear aplicaciones web de manera rápida y sencilla.</li>
-        <li>Django se basa en el patrón de diseño MVC (Modelo-Vista-Controlador), lo que facilita la separación de la lógica de negocio, la presentación y la interacción del usuario.</li>
-        <li>Django incluye una serie de características integradas que facilitan el desarrollo, como un sistema de autenticación, un sistema de administración, un sistema de plantillas, y un sistema de formularios.</li>
-    </ul>
-    <ol>
-        <li><a href="ejercicio-1/">Ir a ejercicio 1</a></li>
-        <li><a href="ejercicio-2/">Ir a ejercicio 2</a></li>
-        <li><a href="ver-notas/">Ver Notas</a></li>
-        <li><a href="tirar-dado/">Tirar Dado</a></li>
-    </ol>
-    <footer>Hecho en Coder año {{ año }}</footer>
-    
-</body>
-</html>
+{% extends 'core/base.html' %}
+
+{% block content %}
+<h1>La Caja de Pandora</h1>
+<ul>
+    <li>Django es un framework de desarrollo web de código abierto, escrito en Python, que permite crear aplicaciones
+        web de manera rápida y sencilla.</li>
+    <li>Django se basa en el patrón de diseño MVC (Modelo-Vista-Controlador), lo que facilita la separación de la lógica
+        de negocio, la presentación y la interacción del usuario.</li>
+    <li>Django incluye una serie de características integradas que facilitan el desarrollo, como un sistema de
+        autenticación, un sistema de administración, un sistema de plantillas, y un sistema de formularios.</li>
+</ul>
+{% endblock content %}
