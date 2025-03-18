@@ -1,7 +1,11 @@
 {% extends 'core/base.html' %}
+{% load static %}
+
 
 {% block content %}
     <h1>Acerca de mí</h1>
     <p>Esteban Acevedo</p>
     <p><a href="https://www.linkedin.com/in/esteban-acevedo-aberastain/" target="_blank">Linkedin</a></p>
+
+    <img src="{% static 'core/perfil.png' %}" alt="foto de perfil" height="200px">
 {% endblock content %}

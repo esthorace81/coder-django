@@ -1,6 +1,9 @@
 {% extends 'core/base.html' %}
 
 {% block content %}
-    <h1>App Producto</h1>    
+    <h1>Producto</h1>
+    <div>
+        <a href="{% url 'producto:categoria_list' %}">Categorías de Productos</a>
+    </div>
 {% endblock content %}
 

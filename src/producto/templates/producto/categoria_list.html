@@ -1,0 +1,32 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+    <h1>Producto: Categorías</h1>
+    <a href="{% url 'producto:categoria_create' %}">
+        <button>Crear Categoría</button>
+    </a>
+    <table border="1">
+        <tr>
+            <th>Nombre</th>
+            <th>Acciones</th>
+        </tr>
+        {% for categoria in object_list %}
+           <tr>
+                <td>{{ categoria.nombre }}</td>
+                <td>
+                    <a href="{% url 'producto:categoria_update' categoria.id %}"><button>Editar</button></a>
+                </td>
+                <td>
+                    <a href="{% url 'producto:categoria_delete' categoria.id %}"><button>Eliminar</button></a>
+                </td>
+            </tr>
+        {% empty %}
+           <tr>
+                <td>No hay categorías registradas</td>
+           </tr>
+        {% endfor %}
+
+    </table>
+
+        <a href="{% url 'producto:index' %}">Volver</a>
+{% endblock content %}
