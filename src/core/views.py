@@ -1,5 +1,9 @@
 # from django.http import HttpResponse
+from django.contrib.auth.views import LoginView
 from django.shortcuts import render
+from django.urls import reverse_lazy
+
+from .forms import LoginForm
 
 # from .models import Cliente
 
@@ -10,6 +14,12 @@ def index(request):
 
 def about(request):
     return render(request, "core/about.html")
+
+
+class MiLoginView(LoginView):
+    template_name = "core/login.html"
+    authentication_form = LoginForm
+    next_page = reverse_lazy("core:index")
 
 
 # def saludar(request):
