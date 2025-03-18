@@ -2,6 +2,9 @@
 
 {% block content %}
     <h1>Producto</h1>
+    <form method="get">
+        <input type="text" name="busqueda" placeholder="Buscar...">
+    </form>
     <a href="{% url 'producto:producto_create' %}">
         <button>Crear Producto</button>
     </a>
