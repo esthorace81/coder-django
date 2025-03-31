@@ -1,4 +1,5 @@
 # from django.http import HttpResponse
+from django.contrib import messages
 from django.contrib.auth.views import LoginView
 from django.shortcuts import render
 from django.urls import reverse_lazy
@@ -20,6 +21,11 @@ class MiLoginView(LoginView):
     template_name = "core/login.html"
     authentication_form = LoginForm
     next_page = reverse_lazy("core:index")
+
+    def form_valid(self, form):
+        usuario = form.get_user()
+        messages.success(self.request, f"Inicio de sesión exitoso. ¡Bienvenido {usuario.username}!")
+        return super().form_valid(form)
 
 
 # def saludar(request):
