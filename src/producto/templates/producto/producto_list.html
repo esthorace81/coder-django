@@ -17,7 +17,7 @@
             <th>Acciones</th>
         </tr>
         {% for producto in object_list %}
-           <tr>
+            <tr>
                 <td>{{ producto.categoria }}</td>
                 <td>{{ producto.nombre }}</td>
                 <td>{{ producto.precio }}</td>
@@ -33,12 +33,12 @@
                 </td>
             </tr>
         {% empty %}
-           <tr>
+            <tr>
                 <td>No hay datos registrados</td>
-           </tr>
+            </tr>
         {% endfor %}
 
     </table>
 
-        <a href="{% url 'producto:index' %}"><button>Volver</button></a>
+    <a href="{% url 'producto:index' %}"><button>Volver</button></a>
 {% endblock content %}
