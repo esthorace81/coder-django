@@ -1,5 +1,8 @@
 # from django.http import HttpResponse
 from django.contrib import messages
+
+# from .models import Cliente
+from django.contrib.auth.decorators import login_not_required
 from django.contrib.auth.views import LoginView
 from django.shortcuts import render
 from django.urls import reverse_lazy
@@ -7,13 +10,13 @@ from django.views.generic import CreateView
 
 from .forms import LoginForm, RegisterForm
 
-# from .models import Cliente
 
-
+@login_not_required
 def index(request):
     return render(request, "core/index.html")
 
 
+@login_not_required
 def about(request):
     return render(request, "core/about.html")
 
