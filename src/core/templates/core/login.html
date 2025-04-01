@@ -2,12 +2,15 @@
 
 {% block content %}
     <h1>Iniciar Sesión</h1>
+    {% for message in messages %}
+        {{ message }}
+    {% endfor %}
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Iniciar Sesión</button>
     </form>
     <p>
-        ¿No tienes una cuenta? <a href="#">Regístrate aquí</a>
+        ¿No tienes una cuenta? <a href="{% url 'core:register' %}">Regístrate aquí</a>
     </p>
 {% endblock content %}

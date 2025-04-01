@@ -3,8 +3,9 @@ from django.contrib import messages
 from django.contrib.auth.views import LoginView
 from django.shortcuts import render
 from django.urls import reverse_lazy
+from django.views.generic import CreateView
 
-from .forms import LoginForm
+from .forms import LoginForm, RegisterForm
 
 # from .models import Cliente
 
@@ -25,6 +26,16 @@ class MiLoginView(LoginView):
     def form_valid(self, form):
         usuario = form.get_user()
         messages.success(self.request, f"Inicio de sesión exitoso. ¡Bienvenido {usuario.username}!")
+        return super().form_valid(form)
+
+
+class MiRegisterView(CreateView):
+    form_class = RegisterForm
+    template_name = "core/register.html"
+    success_url = reverse_lazy("core:login")
+
+    def form_valid(self, form):
+        messages.success(self.request, f"Registro exitoso. Ahora puedes iniciar sesión")
         return super().form_valid(form)
 
 
