@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-md1n#68n#o=utqj(#fq%%so4tx4#)-e3-tk4(5*50u%-axz1zb"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["esthorace.pythonanywhere.com"]
 
 
 # Application definition
@@ -127,3 +127,12 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LOGIN_URL = "/login/"
+STATIC_ROOT = BASE_DIR / "static"
+
+try:
+    # Importar la configuración de desarrollo cuando el archivo esté disponible
+    from .settings_dev import *
+
+except ModuleNotFoundError:
+    # Si no está, no importarlo porque estoy en producción
+    pass
