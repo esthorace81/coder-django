@@ -1,0 +1,21 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Productos - La Caja de Pandora{% endblock title %}
+
+{% block content %}
+<div class="row">
+    {% for producto in productos %}
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm">
+            <img src="{{ producto.imagen.url }}" class="card-img-top" alt="{{ producto.nombre }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ producto.nombre }}</h5>
+                <p class="card-text text-muted">{{ producto.descripcion|truncatechars:100 }}</p>
+                <p class="card-text fw-bold">${{ producto.precio }}</p>
+                <a href="{% url 'producto:detalle' producto.id %}" class="btn btn-primary">Ver más</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}

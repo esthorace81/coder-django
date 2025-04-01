@@ -1,44 +1,94 @@
 {% extends 'core/base.html' %}
 
+{% block title %}Lista de Productos - La Caja de Pandora{% endblock title %}
+
 {% block content %}
-    <h1>Producto</h1>
-    <form method="get">
-        <input type="text" name="busqueda" placeholder="Buscar...">
-    </form>
-    <a href="{% url 'producto:producto_create' %}">
-        <button>Crear Producto</button>
-    </a>
-    <table border="1">
-        <tr>
-            <th>Categoría</th>
-            <th>Producto</th>
-            <th>Precio</th>
-            <th>Stock</th>
-            <th>Acciones</th>
-        </tr>
-        {% for producto in object_list %}
-            <tr>
-                <td>{{ producto.categoria }}</td>
-                <td>{{ producto.nombre }}</td>
-                <td>{{ producto.precio }}</td>
-                <td>{{ producto.stock }}</td>
-                <td>
-                    <a href="{% url 'producto:producto_detail' producto.id %}"><button>Detalle</button></a>
-                </td>
-                <td>
-                    <a href="{% url 'producto:producto_update' producto.id %}"><button>Editar</button></a>
-                </td>
-                <td>
-                    <a href="{% url 'producto:producto_delete' producto.id %}"><button>Eliminar</button></a>
-                </td>
-            </tr>
-        {% empty %}
-            <tr>
-                <td>No hay datos registrados</td>
-            </tr>
-        {% endfor %}
+<div class="container">
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <h1 class="display-6">Gestión de Productos</h1>
+        </div>
+        <div class="col-md-6 text-md-end">
+            <a href="{% url 'producto:producto_create' %}" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> Crear Producto
+            </a>
+        </div>
+    </div>
 
-    </table>
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+            <form method="get" class="row g-3 mb-4">
+                <div class="col-md-8">
+                    <div class="input-group">
+                        <input type="text" name="busqueda" class="form-control" placeholder="Buscar productos..." value="{{ request.GET.busqueda }}">
+                        <button class="btn btn-outline-secondary" type="submit">
+                            <i class="bi bi-search"></i> Buscar
+                        </button>
+                    </div>
+                </div>
+            </form>
 
-    <a href="{% url 'producto:index' %}"><button>Volver</button></a>
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Categoría</th>
+                            <th>Producto</th>
+                            <th>Precio</th>
+                            <th>Stock</th>
+                            <th class="text-center">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for producto in object_list %}
+                            <tr>
+                                <td>{{ producto.categoria }}</td>
+                                <td>{{ producto.nombre }}</td>
+                                <td>${{ producto.precio }}</td>
+                                <td>
+                                    {% if producto.stock > 0 %}
+                                        <span class="badge bg-success">{{ producto.stock }}</span>
+                                    {% else %}
+                                        <span class="badge bg-danger">Sin stock</span>
+                                    {% endif %}
+                                </td>
+                                <td class="text-center">
+                                    <div class="btn-group btn-group-lg" role="group" aria-label="Acciones de producto">
+                                        <a href="{% url 'producto:producto_detail' producto.id %}" 
+                                           class="btn btn-info text-white mx-1" 
+                                           title="Ver detalle">
+                                            <i class="bi bi-eye-fill"></i>
+                                        </a>
+                                        <a href="{% url 'producto:producto_update' producto.id %}" 
+                                           class="btn btn-warning text-white mx-1" 
+                                           title="Editar">
+                                            <i class="bi bi-pencil-fill"></i>
+                                        </a>
+                                        <a href="{% url 'producto:producto_delete' producto.id %}" 
+                                           class="btn btn-danger mx-1" 
+                                           title="Eliminar">
+                                            <i class="bi bi-trash-fill"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% empty %}
+                            <tr>
+                                <td colspan="5" class="text-center text-muted">
+                                    <p class="my-3">No hay productos registrados</p>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center">
+        <a href="{% url 'producto:index' %}" class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i> Volver
+        </a>
+    </div>
+</div>
 {% endblock content %}
